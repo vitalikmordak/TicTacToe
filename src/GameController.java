@@ -2,13 +2,11 @@ import java.util.Scanner;
 
 public class GameController {
     private GameHistory gameHistory = new GameHistory();
-    private TicTacToe ttt = TicTacToe.getInstance();
     private Player player1 = TicTacToe.getPlayer1();
     private Player player2 = TicTacToe.getPlayer2();
 
     // Отображаем игровое меню
     void showMenu() {
-        String history = gameHistory.read();
         String menu = "1 - Играть\n" + "2 - История\n" + "3 - Выход\n" + "Введите число и нажмите Enter:";
         System.out.println(menu);
         Scanner scanner = new Scanner(System.in);
@@ -18,7 +16,7 @@ public class GameController {
                     Game.setStart(true);
                     break;
                 case 2:
-                    System.out.println(history);
+                    System.out.println(gameHistory.read());
                     break;
                 case 3:
                     System.exit(0);
@@ -31,7 +29,7 @@ public class GameController {
 
     // Начало игры
     void startGame() {
-        TicTacToe ttt = new TicTacToe();
+        TicTacToe ttt = TicTacToe.getInstance();
         Scanner scanner = new Scanner(System.in);
         ttt.initBoard();
         System.out.println("Введите имя первого игрока:");

@@ -5,10 +5,9 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 
 class GameHistory {
-    private String path = "D:/Java/TicTacToe/src/data/gameHistory.txt";
+    private String path = "src/data/gameHistory.txt";
 
     void write(String gameResult, boolean draw) {
-        TicTacToe ttt = TicTacToe.getInstance();
         StringBuilder builder = new StringBuilder(gameResult);
         builder.append("\nПервый игрок: ").append(TicTacToe.getPlayer1().getName());
         builder.append("\nВторой игрок: ").append(TicTacToe.getPlayer2().getName());
@@ -16,7 +15,7 @@ class GameHistory {
         builder.append("\nПобедитель: ").append(winner).append("\n");
         builder.append("_____________________________________\n");
         try {
-            Files.write(Paths.get(String.valueOf(path)), builder.toString().getBytes(), StandardOpenOption.APPEND);
+            Files.write(Paths.get(path), builder.toString().getBytes(), StandardOpenOption.APPEND);
         } catch (IOException e) {
             e.printStackTrace();
         }
